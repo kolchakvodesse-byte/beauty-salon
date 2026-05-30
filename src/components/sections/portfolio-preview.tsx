@@ -13,8 +13,8 @@ const itemVariants = { hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 
 // Order matches tr.portfolio.items: contour, rf, body, hair, skin, laser
 const PORTFOLIO_IMAGES = [
   { before: '/images/portfolio3-laser-before.jpg', after: '/images/portfolio3-laser-after.jpg' },
-  { before: '/images/portfolio-face-before.jpg',  after: '/images/portfolio-face-after.jpg'  },
-  { before: '/images/portfolio-body-before.jpg',  after: '/images/portfolio-body-after.jpg'  },
+  { before: '/images/portfolio4-laser-before.jpg', after: '/images/portfolio4-laser-after.jpg' },
+  { before: '/images/portfolio5-laser-before.jpg', after: '/images/portfolio5-laser-after.jpg' },
   { before: '/images/portfolio2-laser-before.jpg', after: '/images/portfolio22-laser-after.jpg' },
   { before: '/images/portfolio1-laser-before.jpg', after: '/images/portfolio2-laser-after.jpg' },
   { before: '/images/portfolio-laser-before.jpg', after: '/images/portfolio-laser-after.jpg' },
