@@ -146,8 +146,40 @@ export function ServicesFaceSection() {
         {tr.services.title}
       </motion.h2>
 
+      {/* ── Mobile: 2-column grid ── */}
+      <div className="sm:hidden w-full px-4 grid grid-cols-2 gap-3">
+        {CARDS.map((card, i) => (
+          <motion.div
+            key={card.id}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: i * 0.06 }}
+          >
+            <Link href={ROUTES.services} className="block group">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 group-hover:border-white/25 transition-all duration-300" style={{ aspectRatio: '3/4' }}>
+                <div className="absolute inset-0 bg-[#141414]" />
+                {card.imageSrc ? (
+                  <Image src={card.imageSrc} alt={card.label} fill style={{ objectFit: 'cover' }} />
+                ) : (
+                  <div className="absolute inset-0" style={{ background: CARD_ART[card.id] }} />
+                )}
+                <div
+                  className="absolute bottom-0 left-0 right-0 px-3 pb-3 pt-6"
+                  style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.5) 55%, transparent 100%)' }}
+                >
+                  <p className="text-white text-[11px] font-semibold tracking-wide leading-tight" style={{ whiteSpace: 'pre-line' }}>{card.label}</p>
+                  <p className="text-white/40 text-[10px] mt-0.5 tracking-wider">{card.sub}</p>
+                </div>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* ── Desktop: portrait + floating cards ── */}
       <div
-        className="relative flex items-center justify-center"
+        className="relative hidden sm:flex items-center justify-center"
         style={{ width: '100%', maxWidth: 900, height: 'clamp(560px, 78vw, 660px)' }}
       >
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">

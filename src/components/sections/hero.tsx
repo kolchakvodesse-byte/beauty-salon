@@ -59,11 +59,11 @@ export function Hero() {
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 45% 55% at 20% 45%, rgba(185,140,80,0.07) 0%, transparent 70%)' }} />
       </div>
 
-      {/* ── Floating cards ── */}
+      {/* ── Floating cards (desktop only) ── */}
       {CARDS.map((card) => (
         <motion.div
           key={card.id}
-          className="absolute z-10"
+          className="absolute z-10 hidden sm:block"
           style={{ width: 108, height: 148, ...card.pos }}
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
