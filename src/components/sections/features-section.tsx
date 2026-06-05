@@ -38,8 +38,7 @@ export function FeaturesSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-40px' }}
-              className="group relative rounded-2xl overflow-hidden snap-start shrink-0 w-[78vw] sm:w-auto"
-              style={{ minHeight: '280px' }}
+              className="group relative rounded-2xl overflow-hidden snap-start shrink-0 w-[46vw] min-h-42.5 sm:w-auto sm:min-h-70"
             >
               {/* Gradient background */}
               <div className="absolute inset-0" style={{ background: cfg.bg }} />
@@ -57,7 +56,7 @@ export function FeaturesSection() {
               />
 
               {/* Content */}
-              <div className="relative z-10 p-7 sm:p-8 flex flex-col justify-between h-full" style={{ minHeight: '280px' }}>
+              <div className="relative z-10 p-4 sm:p-8 flex flex-col justify-between h-full min-h-42.5 sm:min-h-70">
                 <div>
                   <span
                     className="font-sans font-semibold uppercase tracking-[0.25em]"
@@ -66,20 +65,20 @@ export function FeaturesSection() {
                     0{i + 1}
                   </span>
                   <h3
-                    className="font-display font-semibold text-white mt-4 leading-tight group-hover:text-accent-warm transition-colors duration-300"
-                    style={{ fontSize: 'clamp(1rem, 1.8vw, 1.25rem)', whiteSpace: 'pre-line' }}
+                    className="font-display font-semibold text-white mt-2 sm:mt-4 leading-tight group-hover:text-accent-warm transition-colors duration-300 text-[0.75rem] sm:text-[clamp(1rem,1.8vw,1.25rem)]"
+                    style={{ whiteSpace: 'pre-line' }}
                   >
                     {item.title}
                   </h3>
                   <p
-                    className="mt-3 font-sans text-sm leading-relaxed group-hover:text-white/55 transition-colors duration-300"
+                    className="mt-2 sm:mt-3 font-sans text-[10px] sm:text-sm leading-relaxed group-hover:text-white/55 transition-colors duration-300"
                     style={{ color: 'rgba(255,255,255,0.40)' }}
                   >
                     {item.description}
                   </p>
                 </div>
 
-                <div className="mt-8">
+                <div className="mt-4 sm:mt-8">
                   <Link
                     href={ROUTES.services}
                     className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 group-hover:bg-accent-warm/15"
