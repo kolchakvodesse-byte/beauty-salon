@@ -54,7 +54,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative h-screen bg-black overflow-hidden">
+    <section className="relative h-[78vh] sm:h-screen bg-black overflow-hidden">
 
       {/* ── Photo background ── */}
       <div className="absolute inset-0">
