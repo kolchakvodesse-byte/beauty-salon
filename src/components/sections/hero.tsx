@@ -21,14 +21,14 @@ interface CardItem {
 // Desktop positions — same as before
 // Mobile positions — oval around the face (4 rows × 2 columns)
 const CARDS: CardItem[] = [
-  { id: 'peeling',    drift: 0.0, pos: { top: '5%',    left: '18%'  }, mobilePos: { top: '22%', left: '6%'   }, imageSrc: '/images/feature-17.jpg' },
+  { id: 'peeling',    drift: 0.0, pos: { top: '5%',    left: '18%'  }, mobilePos: { top: '22%', left: '21%'  }, imageSrc: '/images/feature-17.jpg' },
   { id: 'serums',     drift: 0.7, pos: { top: '28%',   left: '11%'  }, mobilePos: { top: '42%', left: '2%'   }, imageSrc: '/images/feature-13.jpg' },
   { id: 'masks',      drift: 1.3, pos: { top: '53%',   left: '13%'  }, mobilePos: { top: '61%', left: '4%'   }, imageSrc: '/images/feature-12.jpg' },
-  { id: 'hydration',  drift: 0.5, pos: { bottom: '5%', left: '17%'  }, mobilePos: { top: '79%', left: '8%'   }, imageSrc: '/images/feature-18.png' },
-  { id: 'apparatus',  drift: 1.0, pos: { top: '5%',    right: '18%' }, mobilePos: { top: '22%', right: '6%'  }, imageSrc: '/images/feature-14.jpg' },
+  { id: 'hydration',  drift: 0.5, pos: { bottom: '5%', left: '17%'  }, mobilePos: { top: '79%', left: '21%'  }, imageSrc: '/images/feature-18.png' },
+  { id: 'apparatus',  drift: 1.0, pos: { top: '5%',    right: '18%' }, mobilePos: { top: '22%', right: '21%' }, imageSrc: '/images/feature-14.jpg' },
   { id: 'injections', drift: 1.5, pos: { top: '28%',   right: '11%' }, mobilePos: { top: '42%', right: '2%'  }, imageSrc: '/images/feature-11.jpg' },
   { id: 'massage',    drift: 0.9, pos: { top: '53%',   right: '13%' }, mobilePos: { top: '61%', right: '4%'  }, imageSrc: '/images/feature-15.jpg' },
-  { id: 'steam',      drift: 1.2, pos: { bottom: '5%', right: '17%' }, mobilePos: { top: '79%', right: '8%'  }, imageSrc: '/images/feature-19.jpg' },
+  { id: 'steam',      drift: 1.2, pos: { bottom: '5%', right: '17%' }, mobilePos: { top: '79%', right: '21%' }, imageSrc: '/images/feature-19.jpg' },
 ];
 
 const CARD_ART: Record<string, string> = {
