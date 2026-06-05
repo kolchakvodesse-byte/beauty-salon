@@ -88,7 +88,7 @@ export function Hero() {
       {CARDS.map((card) => (
         <motion.div
           key={card.id}
-          className="absolute z-10 w-17 h-23 sm:w-27 sm:h-37"
+          className="absolute z-10 w-19.5 h-26.5 sm:w-27 sm:h-37"
           style={isMobile ? card.mobilePos : card.pos}
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
