@@ -17,14 +17,14 @@ interface CardConfig {
 }
 
 const CARDS: CardConfig[] = [
-  { id: 'peeling',    label: 'Пилинг',                  sub: 'Химический · Энзимный',   drift: 0.0, pos: { top: '4%',    left: '1%'   } },
-  { id: 'serums',     label: 'Сыворотки',                sub: 'Витамин C · Ретинол',     drift: 0.8, pos: { top: '31%',   left: '-2%'  } },
-  { id: 'masks',      label: 'Маски',                    sub: 'Альгинатные · Тканевые',  drift: 1.4, pos: { bottom: '27%', left: '-2%'  } },
-  { id: 'hydration',  label: 'Увлажнение',               sub: 'Гиалуроновая · Биоревит', drift: 0.5, pos: { bottom: '4%',  left: '4%'   } },
-  { id: 'apparatus',  label: 'Аппаратная\nкосметология', sub: 'BBL · RF · INDIBA®',      drift: 1.0, pos: { top: '4%',    right: '1%'  } },
-  { id: 'injections', label: 'Инъекции красоты',         sub: 'Контурная · Ботокс',      drift: 1.6, pos: { top: '31%',   right: '-2%' } },
-  { id: 'massage',    label: 'Массаж лица',              sub: 'Лимфодренаж · Скульпт',   drift: 0.9, pos: { bottom: '27%', right: '-2%' } },
-  { id: 'steam',      label: 'Паровые процедуры',        sub: 'Озонирование · Пар',      drift: 1.2, pos: { bottom: '4%',  right: '4%'  } },
+  { id: 'peeling',    label: 'Пилинг',                  sub: 'Химический · Энзимный',   drift: 0.0, pos: { top: '4%',    left: '1%'   }, imageSrc: '/images/feature-17.jpg' },
+  { id: 'serums',     label: 'Сыворотки',                sub: 'Витамин C · Ретинол',     drift: 0.8, pos: { top: '31%',   left: '-2%'  }, imageSrc: '/images/feature-13.jpg' },
+  { id: 'masks',      label: 'Маски',                    sub: 'Альгинатные · Тканевые',  drift: 1.4, pos: { bottom: '27%', left: '-2%'  }, imageSrc: '/images/feature-12.jpg' },
+  { id: 'hydration',  label: 'Увлажнение',               sub: 'Гиалуроновая · Биоревит', drift: 0.5, pos: { bottom: '4%',  left: '4%'   }, imageSrc: '/images/feature-18.png' },
+  { id: 'apparatus',  label: 'Аппаратная\nкосметология', sub: 'BBL · RF · INDIBA®',      drift: 1.0, pos: { top: '4%',    right: '1%'  }, imageSrc: '/images/feature-14.jpg' },
+  { id: 'injections', label: 'Инъекции красоты',         sub: 'Контурная · Ботокс',      drift: 1.6, pos: { top: '31%',   right: '-2%' }, imageSrc: '/images/feature-11.jpg' },
+  { id: 'massage',    label: 'Массаж лица',              sub: 'Лимфодренаж · Скульпт',   drift: 0.9, pos: { bottom: '27%', right: '-2%' }, imageSrc: '/images/feature-15.jpg' },
+  { id: 'steam',      label: 'Паровые процедуры',        sub: 'Озонирование · Пар',      drift: 1.2, pos: { bottom: '4%',  right: '4%'  }, imageSrc: '/images/feature-19.jpg' },
 ];
 
 const CARD_ART: Record<string, string> = {
@@ -130,7 +130,7 @@ export function ServicesFaceSection() {
   const { tr } = useLang();
 
   return (
-    <section className="relative min-h-screen bg-black flex flex-col items-center justify-between py-20 overflow-hidden">
+    <section className="relative sm:min-h-screen bg-black flex flex-col items-center justify-between py-8 sm:py-20 gap-6 overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: 'radial-gradient(ellipse 52% 46% at 50% 52%, rgba(80,45,12,0.12) 0%, transparent 68%)' }}
@@ -157,7 +157,7 @@ export function ServicesFaceSection() {
             transition={{ duration: 0.5, delay: i * 0.06 }}
           >
             <Link href={ROUTES.services} className="block group">
-              <div className="relative rounded-2xl overflow-hidden border border-white/10 group-hover:border-white/25 transition-all duration-300" style={{ aspectRatio: '3/4' }}>
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 group-hover:border-white/25 transition-all duration-300" style={{ aspectRatio: '3/2' }}>
                 <div className="absolute inset-0 bg-[#141414]" />
                 {card.imageSrc ? (
                   <Image src={card.imageSrc} alt={card.label} fill style={{ objectFit: 'cover' }} />
