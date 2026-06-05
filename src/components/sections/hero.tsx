@@ -21,14 +21,14 @@ interface CardItem {
 // Desktop positions — same as before
 // Mobile positions — oval around the face (4 rows × 2 columns)
 const CARDS: CardItem[] = [
-  { id: 'peeling',    drift: 0.0, pos: { top: '5%',    left: '18%'  }, mobilePos: { top: '12%', left: '21%'  }, imageSrc: '/images/feature-17.jpg' },
-  { id: 'serums',     drift: 0.7, pos: { top: '28%',   left: '11%'  }, mobilePos: { top: '33%', left: '2%'   }, imageSrc: '/images/feature-13.jpg' },
-  { id: 'masks',      drift: 1.3, pos: { top: '53%',   left: '13%'  }, mobilePos: { top: '52%', left: '4%'   }, imageSrc: '/images/feature-12.jpg' },
-  { id: 'hydration',  drift: 0.5, pos: { bottom: '5%', left: '17%'  }, mobilePos: { top: '70%', left: '21%'  }, imageSrc: '/images/feature-18.png' },
-  { id: 'apparatus',  drift: 1.0, pos: { top: '5%',    right: '18%' }, mobilePos: { top: '12%', right: '21%' }, imageSrc: '/images/feature-14.jpg' },
-  { id: 'injections', drift: 1.5, pos: { top: '28%',   right: '11%' }, mobilePos: { top: '33%', right: '2%'  }, imageSrc: '/images/feature-11.jpg' },
-  { id: 'massage',    drift: 0.9, pos: { top: '53%',   right: '13%' }, mobilePos: { top: '52%', right: '4%'  }, imageSrc: '/images/feature-15.jpg' },
-  { id: 'steam',      drift: 1.2, pos: { bottom: '5%', right: '17%' }, mobilePos: { top: '70%', right: '21%' }, imageSrc: '/images/feature-19.jpg' },
+  { id: 'peeling',    drift: 0.0, pos: { top: '5%',    left: '18%'  }, mobilePos: { top: '20%', left: '21%'  }, imageSrc: '/images/feature-17.jpg' },
+  { id: 'serums',     drift: 0.7, pos: { top: '28%',   left: '11%'  }, mobilePos: { top: '39%', left: '2%'   }, imageSrc: '/images/feature-13.jpg' },
+  { id: 'masks',      drift: 1.3, pos: { top: '53%',   left: '13%'  }, mobilePos: { top: '57%', left: '4%'   }, imageSrc: '/images/feature-12.jpg' },
+  { id: 'hydration',  drift: 0.5, pos: { bottom: '5%', left: '17%'  }, mobilePos: { top: '74%', left: '21%'  }, imageSrc: '/images/feature-18.png' },
+  { id: 'apparatus',  drift: 1.0, pos: { top: '5%',    right: '18%' }, mobilePos: { top: '20%', right: '21%' }, imageSrc: '/images/feature-14.jpg' },
+  { id: 'injections', drift: 1.5, pos: { top: '28%',   right: '11%' }, mobilePos: { top: '39%', right: '2%'  }, imageSrc: '/images/feature-11.jpg' },
+  { id: 'massage',    drift: 0.9, pos: { top: '53%',   right: '13%' }, mobilePos: { top: '57%', right: '4%'  }, imageSrc: '/images/feature-15.jpg' },
+  { id: 'steam',      drift: 1.2, pos: { bottom: '5%', right: '17%' }, mobilePos: { top: '74%', right: '21%' }, imageSrc: '/images/feature-19.jpg' },
 ];
 
 const CARD_ART: Record<string, string> = {
@@ -122,10 +122,10 @@ export function Hero() {
       ))}
 
       {/* ── Mobile CTA at bottom ── */}
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center sm:hidden z-20">
+      <div className="absolute bottom-5 left-0 right-0 flex justify-center sm:hidden z-20">
         <Link
           href={ROUTES.booking}
-          className="px-10 py-3.5 bg-white text-black text-[13px] font-semibold rounded-full hover:bg-white/90 transition-colors tracking-wide shadow-lg"
+          className="px-8 py-2.5 bg-white text-black text-[11px] font-semibold rounded-full hover:bg-white/90 transition-colors tracking-wide shadow-lg"
         >
           {tr.header.book}
         </Link>

@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { X, ChevronDown } from 'lucide-react';
 import { ROUTES } from '@/lib/constants';
 import { useLang } from '@/contexts/language-context';
 import type { Lang } from '@/lib/i18n';
@@ -19,6 +19,8 @@ export function Header() {
   const { lang, setLang, tr } = useLang();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -30,6 +32,16 @@ export function Header() {
     document.body.style.overflow = open ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [open]);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
   const navItems = [
     { label: tr.nav.services,  href: ROUTES.services },
@@ -60,7 +72,7 @@ export function Header() {
           <button
             onClick={() => setOpen(true)}
             aria-label="Open menu"
-            className="relative z-10 w-11 h-11 rounded-xl bg-white/[0.08] backdrop-blur-sm border border-white/10 flex items-center justify-center hover:bg-white/[0.15] transition-colors"
+            className="relative z-10 w-11 h-11 rounded-xl bg-white/8 backdrop-blur-sm border border-white/10 flex items-center justify-center hover:bg-white/15 transition-colors"
           >
             <div className="flex flex-col gap-[5px]">
               <span className="block w-[18px] h-[1.5px] bg-white rounded-full" />
@@ -81,21 +93,62 @@ export function Header() {
 
           {/* Right: lang switcher + CTA */}
           <div className="relative z-10 flex items-center gap-3">
-            {/* Language switcher — always visible */}
-            <div className="flex items-center gap-1 bg-white/6 border border-white/10 rounded-full px-2 py-1">
+
+            {/* Desktop: full pill */}
+            <div className="hidden sm:flex items-center gap-1 bg-white/6 border border-white/10 rounded-full px-2 py-1">
               {LANGS.map(({ code, label }) => (
                 <button
                   key={code}
                   onClick={() => setLang(code)}
                   className={`px-2 py-0.5 rounded-full text-[11px] font-semibold tracking-wider transition-all duration-200 ${
-                    lang === code
-                      ? 'bg-white text-black'
-                      : 'text-white/45 hover:text-white/80'
+                    lang === code ? 'bg-white text-black' : 'text-white/45 hover:text-white/80'
                   }`}
                 >
                   {label}
                 </button>
               ))}
+            </div>
+
+            {/* Mobile: dropdown */}
+            <div ref={langRef} className="relative sm:hidden">
+              <button
+                onClick={() => setLangOpen(v => !v)}
+                className="flex items-center gap-1 bg-white/6 border border-white/10 rounded-full px-3 py-1.5"
+              >
+                <span className="text-[11px] font-semibold text-white tracking-wider">
+                  {lang.toUpperCase()}
+                </span>
+                <motion.span
+                  animate={{ rotate: langOpen ? 180 : 0 }}
+                  transition={{ duration: 0.22 }}
+                  className="flex items-center"
+                >
+                  <ChevronDown size={12} className="text-white/60" />
+                </motion.span>
+              </button>
+
+              <AnimatePresence>
+                {langOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6, scaleY: 0.85 }}
+                    animate={{ opacity: 1, y: 0, scaleY: 1 }}
+                    exit={{ opacity: 0, y: -6, scaleY: 0.85 }}
+                    transition={{ duration: 0.2, ease: 'easeOut' }}
+                    style={{ transformOrigin: 'top' }}
+                    className="absolute top-full mt-2 right-0 bg-black/95 border border-white/12 rounded-xl overflow-hidden min-w-[56px] shadow-xl"
+                  >
+                    {LANGS.filter(({ code }) => code !== lang).map(({ code, label }) => (
+                      <button
+                        key={code}
+                        onClick={() => { setLang(code); setLangOpen(false); }}
+                        className="block w-full px-4 py-2 text-[11px] font-semibold text-white/55 hover:text-white hover:bg-white/10 transition-colors text-center"
+                      >
+                        {label}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Desktop CTA only */}
@@ -126,7 +179,7 @@ export function Header() {
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="w-11 h-11 rounded-xl bg-white/[0.08] border border-white/10 flex items-center justify-center hover:bg-white/[0.15] transition-colors"
+                className="w-11 h-11 rounded-xl bg-white/8 border border-white/10 flex items-center justify-center hover:bg-white/15 transition-colors"
               >
                 <X size={18} className="text-white" />
               </button>
@@ -141,16 +194,13 @@ export function Header() {
               </Link>
 
               <div className="flex items-center gap-3">
-                {/* Lang switcher inside overlay */}
                 <div className="flex items-center gap-1 bg-white/6 border border-white/10 rounded-full px-2 py-1">
                   {LANGS.map(({ code, label }) => (
                     <button
                       key={code}
                       onClick={() => setLang(code)}
                       className={`px-2 py-0.5 rounded-full text-[11px] font-semibold tracking-wider transition-all duration-200 ${
-                        lang === code
-                          ? 'bg-white text-black'
-                          : 'text-white/45 hover:text-white/80'
+                        lang === code ? 'bg-white text-black' : 'text-white/45 hover:text-white/80'
                       }`}
                     >
                       {label}
