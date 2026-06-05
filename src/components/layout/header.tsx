@@ -81,8 +81,8 @@ export function Header() {
 
           {/* Right: lang switcher + CTA */}
           <div className="relative z-10 flex items-center gap-3">
-            {/* Language switcher */}
-            <div className="hidden sm:flex items-center gap-1 bg-white/[0.06] border border-white/10 rounded-full px-2 py-1">
+            {/* Language switcher — always visible */}
+            <div className="flex items-center gap-1 bg-white/6 border border-white/10 rounded-full px-2 py-1">
               {LANGS.map(({ code, label }) => (
                 <button
                   key={code}
@@ -98,17 +98,10 @@ export function Header() {
               ))}
             </div>
 
+            {/* Desktop CTA only */}
             <Link
               href={ROUTES.booking}
               className="hidden sm:inline-flex items-center px-5 py-2.5 bg-white text-black text-[13px] font-semibold rounded-full hover:bg-white/90 transition-colors tracking-wide"
-            >
-              {tr.header.book}
-            </Link>
-
-            {/* Mobile CTA */}
-            <Link
-              href={ROUTES.booking}
-              className="sm:hidden inline-flex items-center px-4 py-2 bg-white text-black text-[12px] font-semibold rounded-full hover:bg-white/90 transition-colors"
             >
               {tr.header.book}
             </Link>
@@ -149,7 +142,7 @@ export function Header() {
 
               <div className="flex items-center gap-3">
                 {/* Lang switcher inside overlay */}
-                <div className="flex items-center gap-1 bg-white/[0.06] border border-white/10 rounded-full px-2 py-1">
+                <div className="flex items-center gap-1 bg-white/6 border border-white/10 rounded-full px-2 py-1">
                   {LANGS.map(({ code, label }) => (
                     <button
                       key={code}
