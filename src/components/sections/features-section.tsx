@@ -38,7 +38,7 @@ export function FeaturesSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: '-40px' }}
-              className="group relative rounded-2xl overflow-hidden snap-start shrink-0 w-[46vw] min-h-42.5 sm:w-auto sm:min-h-70"
+              className="group relative rounded-2xl overflow-hidden snap-start shrink-0 w-[41vw] min-h-42.5 sm:w-auto sm:min-h-70"
             >
               {/* Gradient background */}
               <div className="absolute inset-0" style={{ background: cfg.bg }} />
