@@ -14,7 +14,7 @@ export function TaglineSection() {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="bg-black border-t border-white/[0.07]"
+      className="hidden sm:block bg-black border-t border-white/[0.07]"
       style={{ background: 'linear-gradient(90deg, #060606 0%, #0c0a0a 50%, #060606 100%)' }}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-5 flex items-center justify-between gap-6">
