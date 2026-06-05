@@ -126,12 +126,8 @@
 }
 
 @media (max-width: 639px) {
-  .hero-face-wrap {
-    transform: scale(0.70) translateY(-3%);
-    transform-origin: center 38%;
-  }
   /* Symmetric side gradient on mobile so side cards are visible */
   .hero-grad-h {
-    background: linear-gradient(to right, rgba(0,0,0,0.35), rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.05) 60%, rgba(0,0,0,0.35)) !important;
+    background: linear-gradient(to right, rgba(0,0,0,0.30), rgba(0,0,0,0.04) 40%, rgba(0,0,0,0.04) 60%, rgba(0,0,0,0.30)) !important;
   }
 }

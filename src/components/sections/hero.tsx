@@ -46,9 +46,20 @@ export function Hero() {
 
       {/* ── Photo background ── */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 hero-face-wrap">
+        {/* Desktop */}
+        <div className="absolute inset-0 hidden sm:block hero-face-wrap">
           <Image
             src="/images/feature-3.jpg"
+            alt="Beauty model"
+            fill
+            priority
+            style={{ objectFit: 'cover', objectPosition: 'center center' }}
+          />
+        </div>
+        {/* Mobile — portrait photo, covers full screen */}
+        <div className="absolute inset-0 sm:hidden">
+          <Image
+            src="/images/hero-mobile.jpg"
             alt="Beauty model"
             fill
             priority
