@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -13,18 +14,21 @@ interface CardItem {
   id: CardId;
   drift: number;
   pos: CSSProperties;
+  mobilePos: CSSProperties;
   imageSrc?: string;
 }
 
+// Desktop positions — same as before
+// Mobile positions — oval around the face (4 rows × 2 columns)
 const CARDS: CardItem[] = [
-  { id: 'peeling',    drift: 0.0, pos: { top: '5%',    left: '18%'  }, imageSrc: '/images/feature-17.jpg' },
-  { id: 'serums',     drift: 0.7, pos: { top: '28%',   left: '11%'  }, imageSrc: '/images/feature-13.jpg' },
-  { id: 'masks',      drift: 1.3, pos: { top: '53%',   left: '13%'  }, imageSrc: '/images/feature-12.jpg' },
-  { id: 'hydration',  drift: 0.5, pos: { bottom: '5%', left: '17%'  }, imageSrc: '/images/feature-18.png' },
-  { id: 'apparatus',  drift: 1.0, pos: { top: '5%',    right: '18%' }, imageSrc: '/images/feature-14.jpg' },
-  { id: 'injections', drift: 1.5, pos: { top: '28%',   right: '11%' }, imageSrc: '/images/feature-11.jpg' },
-  { id: 'massage',    drift: 0.9, pos: { top: '53%',   right: '13%' }, imageSrc: '/images/feature-15.jpg' },
-  { id: 'steam',      drift: 1.2, pos: { bottom: '5%', right: '17%' }, imageSrc: '/images/feature-19.jpg' },
+  { id: 'peeling',    drift: 0.0, pos: { top: '5%',    left: '18%'  }, mobilePos: { top: '22%', left: '6%'   }, imageSrc: '/images/feature-17.jpg' },
+  { id: 'serums',     drift: 0.7, pos: { top: '28%',   left: '11%'  }, mobilePos: { top: '42%', left: '2%'   }, imageSrc: '/images/feature-13.jpg' },
+  { id: 'masks',      drift: 1.3, pos: { top: '53%',   left: '13%'  }, mobilePos: { top: '61%', left: '4%'   }, imageSrc: '/images/feature-12.jpg' },
+  { id: 'hydration',  drift: 0.5, pos: { bottom: '5%', left: '17%'  }, mobilePos: { top: '79%', left: '8%'   }, imageSrc: '/images/feature-18.png' },
+  { id: 'apparatus',  drift: 1.0, pos: { top: '5%',    right: '18%' }, mobilePos: { top: '22%', right: '6%'  }, imageSrc: '/images/feature-14.jpg' },
+  { id: 'injections', drift: 1.5, pos: { top: '28%',   right: '11%' }, mobilePos: { top: '42%', right: '2%'  }, imageSrc: '/images/feature-11.jpg' },
+  { id: 'massage',    drift: 0.9, pos: { top: '53%',   right: '13%' }, mobilePos: { top: '61%', right: '4%'  }, imageSrc: '/images/feature-15.jpg' },
+  { id: 'steam',      drift: 1.2, pos: { bottom: '5%', right: '17%' }, mobilePos: { top: '79%', right: '8%'  }, imageSrc: '/images/feature-19.jpg' },
 ];
 
 const CARD_ART: Record<string, string> = {
@@ -40,6 +44,14 @@ const CARD_ART: Record<string, string> = {
 
 export function Hero() {
   const { tr } = useLang();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
 
   return (
     <section className="relative h-screen bg-black overflow-hidden">
@@ -77,7 +89,7 @@ export function Hero() {
         <motion.div
           key={card.id}
           className="absolute z-10 w-17 h-23 sm:w-27 sm:h-37"
-          style={{ ...card.pos }}
+          style={isMobile ? card.mobilePos : card.pos}
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: card.drift * 0.12 + 0.4 }}
