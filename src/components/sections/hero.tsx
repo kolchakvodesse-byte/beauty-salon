@@ -46,25 +46,27 @@ export function Hero() {
 
       {/* ── Photo background ── */}
       <div className="absolute inset-0">
-        <Image
-          src="/images/feature-3.jpg"
-          alt="Beauty model"
-          fill
-          priority
-          style={{ objectFit: 'cover', objectPosition: 'center center', transform: 'scale(1.12) translateX(-2.5%) translateY(10%)', transformOrigin: 'center center' }}
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-black/80 from-28% via-black/35 to-transparent" />
+        <div className="absolute inset-0 hero-face-wrap">
+          <Image
+            src="/images/feature-3.jpg"
+            alt="Beauty model"
+            fill
+            priority
+            style={{ objectFit: 'cover', objectPosition: 'center center' }}
+          />
+        </div>
+        <div className="absolute inset-0 hero-grad-h bg-linear-to-r from-black/80 from-28% via-black/35 to-transparent" />
         <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-black/35" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 55% 65% at 68% 42%, rgba(155,75,110,0.16) 0%, transparent 65%)' }} />
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 45% 55% at 20% 45%, rgba(185,140,80,0.07) 0%, transparent 70%)' }} />
       </div>
 
-      {/* ── Floating cards (desktop only) ── */}
+      {/* ── Floating cards ── */}
       {CARDS.map((card) => (
         <motion.div
           key={card.id}
-          className="absolute z-10 hidden sm:block"
-          style={{ width: 108, height: 148, ...card.pos }}
+          className="absolute z-10 w-17 h-23 sm:w-27 sm:h-37"
+          style={{ ...card.pos }}
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: card.drift * 0.12 + 0.4 }}
@@ -83,11 +85,11 @@ export function Hero() {
                   <div className="absolute inset-0" style={{ background: CARD_ART[card.id] }} />
                 )}
                 <div
-                  className="absolute bottom-0 left-0 right-0 px-3 pb-3 pt-6"
+                  className="absolute bottom-0 left-0 right-0 px-2 pb-2 pt-4 sm:px-3 sm:pb-3 sm:pt-6"
                   style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.96) 0%, rgba(0,0,0,0.5) 55%, transparent 100%)' }}
                 >
-                  <p className="text-white text-[10px] font-semibold tracking-wide leading-snug" style={{ whiteSpace: 'pre-line' }}>{tr.hero.cards[card.id].label}</p>
-                  <p className="text-white/40 text-[9px] mt-0.5 tracking-wider leading-snug">{tr.hero.cards[card.id].sub}</p>
+                  <p className="text-white text-[9px] sm:text-[10px] font-semibold tracking-wide leading-snug" style={{ whiteSpace: 'pre-line' }}>{tr.hero.cards[card.id].label}</p>
+                  <p className="text-white/40 text-[8px] sm:text-[9px] mt-0.5 tracking-wider leading-snug">{tr.hero.cards[card.id].sub}</p>
                 </div>
                 <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ boxShadow: 'inset 0 0 0 1px rgba(200,168,130,0.4)' }} />
               </div>

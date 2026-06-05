@@ -16,7 +16,7 @@ const PORTFOLIO_IMAGES = [
   { before: '/images/portfolio4-laser-before.jpg', after: '/images/portfolio4-laser-after.jpg' },
   { before: '/images/portfolio5-laser-before.jpg', after: '/images/portfolio5-laser-after.jpg' },
   { before: '/images/portfolio2-laser-before.jpg', after: '/images/portfolio22-laser-after.jpg' },
-  { before: '/images/portfolio1-laser-before.jpg', after: '/images/portfolio2-laser-after.jpg' },
+  { before: '/images/portfolio1-laser-before.jpg', after: '/images/portfolio1-laser-after.jpg' },
   { before: '/images/portfolio-laser-before.jpg', after: '/images/portfolio-laser-after.jpg' },
 ];
 
