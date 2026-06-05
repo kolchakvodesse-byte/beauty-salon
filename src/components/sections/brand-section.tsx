@@ -14,7 +14,7 @@ export function BrandSection() {
   const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <section ref={ref} className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+    <section ref={ref} className="relative h-auto py-20 sm:h-screen sm:py-0 flex items-center justify-center overflow-hidden bg-black">
       <ParticlesCanvas className="z-0 opacity-40" />
 
       <div className="absolute inset-0 z-1 bg-linear-to-b from-black/60 via-transparent to-black/60 pointer-events-none" />
