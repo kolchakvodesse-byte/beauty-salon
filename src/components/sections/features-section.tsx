@@ -13,10 +13,6 @@ const CARD_CONFIG = [
   { bg: 'linear-gradient(135deg, #0d1410 0%, #111c14 100%)', tint: 'radial-gradient(ellipse 70% 80% at 30% 70%, rgba(120,150,100,0.45) 0%, transparent 65%)' },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
 const cardVariants = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
@@ -28,12 +24,10 @@ export function FeaturesSection() {
 
   return (
     <section className="bg-black px-3 pb-3">
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: '-40px' }}
-        className="grid grid-cols-2 lg:grid-cols-4 gap-3"
+      {/* Mobile: horizontal carousel | Desktop: grid */}
+      <div
+        className="carousel-scroll flex gap-3 overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-4"
+        style={{ scrollbarWidth: 'none' }}
       >
         {items.map((item, i) => {
           const cfg = CARD_CONFIG[i];
@@ -41,7 +35,10 @@ export function FeaturesSection() {
             <motion.div
               key={i}
               variants={cardVariants}
-              className="group relative rounded-2xl overflow-hidden"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-40px' }}
+              className="group relative rounded-2xl overflow-hidden snap-start shrink-0 w-[78vw] sm:w-auto"
               style={{ minHeight: '280px' }}
             >
               {/* Gradient background */}
@@ -98,7 +95,7 @@ export function FeaturesSection() {
             </motion.div>
           );
         })}
-      </motion.div>
+      </div>
     </section>
   );
 }
